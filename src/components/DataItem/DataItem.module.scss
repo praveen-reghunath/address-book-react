@@ -1,0 +1,21 @@
+@import '~styles/variables';
+@import '~styles/shared';
+
+.DataItem {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 40px 0;
+
+    .label {
+        // flex-grow: 1;
+        width: 25%;
+        padding-left: 10%;
+        width: 20%;
+    }
+
+    .value {
+        // flex-grow: 3;
+        width: 55%;
+    }
+}

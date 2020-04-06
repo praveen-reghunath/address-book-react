@@ -1,0 +1,15 @@
+.default-font {
+    font-family: sans-serif;
+}
+
+.regular-body-text {
+    @extend .default-font;
+    font-weight: 400;
+    font-size: 23px;
+}
+
+.small-text {
+    @extend .default-font;
+    font-size: 12px;
+    line-height: 14px;
+}

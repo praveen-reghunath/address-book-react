@@ -1,13 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+import contactReducer from 'redux/reducers/contact';
+import './index.scss';
+import thunkMiddleware from 'redux-thunk';
+
+const middlewareEnhancer = applyMiddleware(thunkMiddleware);
+
+const enhancers = [middlewareEnhancer];
+
+if (window.devToolsExtension) {
+  enhancers.push(window.devToolsExtension());
+}
+
+const composedEnhancers = compose(...enhancers);
+
+const store = createStore(contactReducer, undefined, composedEnhancers);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

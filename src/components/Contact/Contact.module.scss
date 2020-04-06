@@ -1,0 +1,27 @@
+.Contact {
+    @import '~styles/variables';
+    @import '~styles/shared';
+    text-align: center;
+    height: 60px;
+    display: flex;
+    border-bottom: solid 1px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px;
+    box-sizing: border-box;
+    // font-size: 20px;
+    cursor: pointer;
+
+    &:hover {
+        color: green;
+    }
+
+    &.Selected {
+        color: $primary;
+        font-weight: 700;
+    }
+
+    .firstName {
+        margin-right: 5px;
+    }
+}
