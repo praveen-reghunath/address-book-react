@@ -1,6 +1,6 @@
 import React from 'react';
 import Contact from 'components/Contact';
-import NewContactButton from 'components/NewContactButton';
+import NewContactButton from 'components/AddNewButton';
 
 import style from './ContactList.module.scss';
 

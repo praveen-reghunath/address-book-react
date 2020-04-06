@@ -3,16 +3,16 @@ import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
-import style from './NewContactButton.module.scss';
+import style from './AddNewButton.module.scss';
 
-function NewContactButton(props) {
-    const { onClick = () => { } } = props;
+function AddNewButton(props) {
+    const { onClick = () => { }, label = 'Add new contact' } = props;
     return (
-        <div className={style.NewContactButton} onClick={onClick} >
+        <div className={style.AddNewButton} onClick={onClick} >
             <FontAwesomeIcon icon={faPlusCircle} className={style.icon} />
-            <span className={style.label}>Add new contact</span>
+            <span className={style.label}>{label}</span>
         </div >
     );
 }
 
-export default NewContactButton;
+export default AddNewButton;
