@@ -14,8 +14,8 @@ export function getAllContacts() {
         dispatch({ type: CONTACTS_FETCH_BEGIN });
 
         try {
-            const contactData = await API.getAllContacts();
-            dispatch({ type: CONTACTS_FETCH_SUCCESS, payload: contactData });
+            const data = await API.getAllContacts();
+            dispatch({ type: CONTACTS_FETCH_SUCCESS, payload: data });
         }
         catch (error) {
             console.log(error);
@@ -50,5 +50,17 @@ export function selectContact(id, index) {
             console.log(error);
             dispatch({ type: CONTACT_DETAILS_FETCH_FAILURE, payload: error });
         }
+    }
+}
+
+export function editContact(id) {
+
+    return async dispatch => {
+        const {
+            EDIT_CONTACT_DETAILS,
+        } = CONTACT_ACTION_TYPE;
+
+        dispatch({ type: EDIT_CONTACT_DETAILS, payload: id });
+
     }
 }

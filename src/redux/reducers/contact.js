@@ -6,11 +6,14 @@ const {
     CONTACTS_FETCH_FAILURE,
     CONTACT_DETAILS_FETCH_BEGIN,
     CONTACT_DETAILS_FETCH_SUCCESS,
-    CONTACT_DETAILS_FETCH_FAILURE
+    CONTACT_DETAILS_FETCH_FAILURE,
+    EDIT_CONTACT_DETAILS
 } = CONTACT_ACTION_TYPE;
 
 const initialState = {
     contacts: [],
+    addressTypes: [],
+    phoneTypes: [],
     isContactsLoading: true,
     error: null,
     selectedContact: null,
@@ -30,8 +33,8 @@ export default function contactReducer(state = initialState, action) {
         case CONTACTS_FETCH_SUCCESS: {
             return {
                 ...state,
+                ...action.payload,
                 isContactsLoading: false,
-                contacts: action.payload,
             };
         }
         case CONTACTS_FETCH_FAILURE: {
@@ -61,7 +64,7 @@ export default function contactReducer(state = initialState, action) {
         case CONTACT_DETAILS_FETCH_SUCCESS: {
             return {
                 ...state,
-                contact: action.payload,
+                contact: { ...action.payload, isEditMode: false },
                 isContactDetailsLoading: false,
             };
         }
@@ -70,6 +73,12 @@ export default function contactReducer(state = initialState, action) {
                 ...state,
                 selectedContactError: action.payload,
                 isContactDetailsLoading: false,
+            };
+        }
+        case EDIT_CONTACT_DETAILS: {
+            return {
+                ...state,
+                contact: { ...state.contact, isEditMode: true },
             };
         }
         default:

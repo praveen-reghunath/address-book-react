@@ -1,6 +1,6 @@
 import React from 'react';
 import Contact from 'components/Contact';
-import NewContactButton from 'components/AddNewButton';
+import AddNewButton from 'components/AddNewButton';
 
 import style from './ContactList.module.scss';
 
@@ -20,7 +20,7 @@ function ContactList(props) {
             {
                 items.map((item, index) => <Contact key={item.id} {...item} onClick={() => onContactSelect(index, item)} />)
             }
-            <NewContactButton onClick={onAddNewClick} />
+            <AddNewButton onClick={onAddNewClick} label="Add new contact" className={style.addNewButton} />
         </div>
     )
 }

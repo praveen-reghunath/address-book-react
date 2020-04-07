@@ -7,10 +7,9 @@ import style from './ContactDetails.module.scss';
 
 function ContactDetails(props) {
     const { contact } = props;
-    const [isEditMode, setIsEditMode] = useState(false);
 
     const toggleEdit = () => {
-        setIsEditMode(!isEditMode);
+        props.editContact();
     };
 
     const onDoneClick = () => {
@@ -22,6 +21,7 @@ function ContactDetails(props) {
     };
 
     if (contact) {
+        const isEditMode = contact.isEditMode;
         return (
             <div className={classNames(style.ContactDetails)} >
                 <div className={style.buttonRow}>
@@ -37,7 +37,7 @@ function ContactDetails(props) {
                     }
                 </div>
                 {
-                    (isEditMode ? (<Build data={contact} />) : (<View data={contact} />))
+                    (isEditMode ? (<Build />) : (<View data={contact} />))
                 }
             </div >
         );

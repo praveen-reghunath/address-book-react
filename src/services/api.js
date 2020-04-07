@@ -21,7 +21,11 @@ async function post(url, data) {
 class ApiClient {
 
     static async getAllContacts() {
-        return get(URL.CONTACTS);
+        return {
+            contacts: await get(URL.CONTACTS),
+            addressTypes: await get(URL.ADDRESS_TYPES),
+            phoneTypes: await get(URL.PHONE_TYPES),
+        }
     }
 
     static async saveContact(contact, mode = 'CREATE') {
