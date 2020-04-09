@@ -53,14 +53,26 @@ export function selectContact(id, index) {
     }
 }
 
-export function editContact(id) {
+export function requestEditContact(id) {
 
     return async dispatch => {
         const {
-            EDIT_CONTACT_DETAILS,
+            REQUEST_EDIT_CONTACT,
         } = CONTACT_ACTION_TYPE;
 
-        dispatch({ type: EDIT_CONTACT_DETAILS, payload: id });
+        dispatch({ type: REQUEST_EDIT_CONTACT, payload: id });
+
+    }
+}
+
+export function onContactChange(contact) {
+
+    return async dispatch => {
+        const {
+            EDIT_CONTACT_CONTACT_CHANGED,
+        } = CONTACT_ACTION_TYPE;
+
+        dispatch({ type: EDIT_CONTACT_CONTACT_CHANGED, payload: contact });
 
     }
 }

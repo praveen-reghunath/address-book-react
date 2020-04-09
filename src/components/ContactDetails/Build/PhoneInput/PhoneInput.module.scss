@@ -1,0 +1,29 @@
+@import '~styles/variables';
+@import '~styles/shared';
+
+.PhoneInput {
+
+    .phoneTypes {
+        display: flex;
+        align-items: center;
+    }
+
+    .icon {
+        color: $primary-red;
+        cursor: pointer;
+    }
+
+    .DropDownBox {
+        @extend .regular-body-text;
+        border: 0;
+        border-radius: unset;
+        margin-left: 5px;
+        background-color: inherit;
+    }
+
+    .input {
+        width: 100%;
+        height: 40px;
+        font-size: inherit;
+    }
+}

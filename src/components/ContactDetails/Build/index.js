@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { editContact } from 'redux/actions/contact';
+import { onContactChange } from 'redux/actions/contact';
 
 import Build from './Build';
 
@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = {
-    editContact
+    onContactChange
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Build);

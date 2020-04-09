@@ -7,7 +7,8 @@ const {
     CONTACT_DETAILS_FETCH_BEGIN,
     CONTACT_DETAILS_FETCH_SUCCESS,
     CONTACT_DETAILS_FETCH_FAILURE,
-    EDIT_CONTACT_DETAILS
+    REQUEST_EDIT_CONTACT,
+    EDIT_CONTACT_CONTACT_CHANGED
 } = CONTACT_ACTION_TYPE;
 
 const initialState = {
@@ -75,10 +76,16 @@ export default function contactReducer(state = initialState, action) {
                 isContactDetailsLoading: false,
             };
         }
-        case EDIT_CONTACT_DETAILS: {
+        case REQUEST_EDIT_CONTACT: {
             return {
                 ...state,
                 contact: { ...state.contact, isEditMode: true },
+            };
+        }
+        case EDIT_CONTACT_CONTACT_CHANGED: {
+            return {
+                ...state,
+                contact: { ...state.contact }
             };
         }
         default:

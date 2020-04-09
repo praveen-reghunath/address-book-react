@@ -8,8 +8,8 @@ import style from './ContactDetails.module.scss';
 function ContactDetails(props) {
     const { contact } = props;
 
-    const toggleEdit = () => {
-        props.editContact();
+    const startEdit = () => {
+        props.requestEditContact();
     };
 
     const onDoneClick = () => {
@@ -32,7 +32,7 @@ function ContactDetails(props) {
                                 <button className={style.doneButton} onClick={() => onDoneClick()}>Done</button>
                             </>
                         ) : (
-                                <button className={style.editButton} onClick={() => toggleEdit()}>Edit</button>
+                                <button className={style.editButton} onClick={() => startEdit()}>Edit</button>
                             ))
                     }
                 </div>

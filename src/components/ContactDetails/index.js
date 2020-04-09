@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { editContact } from 'redux/actions/contact';
+import { requestEditContact } from 'redux/actions/contact';
 
 import ContactDetails from './ContactDetails';
 
@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = {
-    editContact
+    requestEditContact
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactDetails);
