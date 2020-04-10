@@ -1,19 +1,22 @@
 import { connect } from 'react-redux';
-import { requestEditContact } from 'redux/actions/contact';
+import { requestEditContact, saveContact, deleteContact } from 'redux/actions/contact';
 
 import ContactDetails from './ContactDetails';
 
 const mapStateToProps = (state, ownProps) => {
-    const { contact, error, isContactLoading: isLoading } = state;
+    const { selectedContact: contact, selectedContactIndex, error, isContactLoading: isLoading } = state;
     return ({
         contact,
+        selectedContactIndex,
         error,
         isLoading
     });
 }
 
 const mapDispatchToProps = {
-    requestEditContact
+    requestEditContact,
+    saveContact,
+    deleteContact
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactDetails);

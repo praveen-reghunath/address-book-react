@@ -8,7 +8,8 @@ const {
     CONTACT_DETAILS_FETCH_SUCCESS,
     CONTACT_DETAILS_FETCH_FAILURE,
     REQUEST_EDIT_CONTACT,
-    EDIT_CONTACT_CONTACT_CHANGED
+    EDIT_CONTACT_CONTACT_CHANGED,
+    DELETE_CONTACT
 } = CONTACT_ACTION_TYPE;
 
 const initialState = {
@@ -65,7 +66,7 @@ export default function contactReducer(state = initialState, action) {
         case CONTACT_DETAILS_FETCH_SUCCESS: {
             return {
                 ...state,
-                contact: { ...action.payload, isEditMode: false },
+                selectedContact: { ...action.payload, isEditMode: false },
                 isContactDetailsLoading: false,
             };
         }
@@ -79,13 +80,26 @@ export default function contactReducer(state = initialState, action) {
         case REQUEST_EDIT_CONTACT: {
             return {
                 ...state,
-                contact: { ...state.contact, isEditMode: true },
+                selectedContact: { ...state.selectedContact, isEditMode: true },
             };
         }
         case EDIT_CONTACT_CONTACT_CHANGED: {
             return {
                 ...state,
-                contact: { ...state.contact }
+                selectedContact: { ...state.selectedContact }
+            };
+        }
+        case DELETE_CONTACT: {
+            const index = action.payload;
+            const { contacts } = state;
+            contacts.splice(index, 1);
+            return {
+                ...state,
+                contacts: [...contacts],
+                selectedContact: null,
+                selectedContactIndex: -1,
+                isContactDetailsLoading: false,
+                selectedContactError: null
             };
         }
         default:

@@ -4,7 +4,7 @@ import { onContactChange } from 'redux/actions/contact';
 import Build from './Build';
 
 const mapStateToProps = (state, ownProps) => {
-    const { contact, addressTypes, phoneTypes } = state;
+    const { selectedContact: contact, addressTypes, phoneTypes } = state;
     return ({
         contact,
         addressTypes,

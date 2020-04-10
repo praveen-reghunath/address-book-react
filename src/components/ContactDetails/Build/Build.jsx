@@ -24,8 +24,7 @@ function Build(props) {
         onContactChange(contact);
     };
 
-    const onPhoneChange = (phoneNumber, phone, index) => {
-        phone.phoneNumber = phoneNumber;
+    const onPhoneChange = (newPhone) => {
         onContactChange(contact);
     };
 
@@ -33,7 +32,6 @@ function Build(props) {
         contact.phones.splice(index, 1);
         onContactChange(contact);
     };
-
 
     const onAddressChange = () => {
         onContactChange(contact);
@@ -57,9 +55,9 @@ function Build(props) {
                     <PhoneInput
                         key={phone.id}
                         phoneTypes={phoneTypes}
-                        value={phone.phoneNumber}
+                        value={phone}
                         onDeleteClick={() => onPhoneDelete(index)}
-                        onChange={(newValue) => { onPhoneChange(newValue, phone, index); }}
+                        onChange={onPhoneChange}
                     />
                 ))
             }

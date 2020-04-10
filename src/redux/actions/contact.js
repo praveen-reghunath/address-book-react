@@ -76,3 +76,30 @@ export function onContactChange(contact) {
 
     }
 }
+
+export function saveContact(contact) {
+
+    return async dispatch => {
+        const {
+            EDIT_CONTACT_CONTACT_CHANGED,
+        } = CONTACT_ACTION_TYPE;
+
+        dispatch({ type: EDIT_CONTACT_CONTACT_CHANGED, payload: contact });
+
+    }
+}
+
+export function deleteContact(id, index) {
+
+    return async dispatch => {
+        const {
+            DELETE_CONTACT,
+        } = CONTACT_ACTION_TYPE;
+
+        // API Call.
+
+        dispatch({ type: DELETE_CONTACT, payload: index });
+
+    }
+}
+
