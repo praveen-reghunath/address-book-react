@@ -98,7 +98,7 @@ export default function contactReducer(state = initialState, action) {
 
             return {
                 ...state,
-                selectedContact: { phones: [], addresses: [], isEditMode: true },
+                selectedContact: { id: -1, firstName: '', lastName: '', phones: [], addresses: [], isEditMode: true },
                 selectedContactIndex: -1,
                 contacts: [...contacts]
             };
@@ -116,11 +116,16 @@ export default function contactReducer(state = initialState, action) {
         }
         case DELETE_CONTACT_SUCCESS: {
             const index = action.payload;
-            const { contacts } = state;
-            contacts.splice(index, 1);
+            let { contacts } = state;
+
+            if (index > -1) {
+                contacts.splice(index, 1);
+                contacts = [...contacts];
+            }
+
             return {
                 ...state,
-                contacts: [...contacts],
+                contacts,
                 selectedContact: null,
                 selectedContactIndex: -1,
                 isContactDetailsLoading: false,
@@ -145,15 +150,17 @@ export default function contactReducer(state = initialState, action) {
             };
         }
         case SAVE_CONTACT_SUCCESS: {
-            const { contact, contactDetails, index } = action.payload;
+            let { contact, contactDetails, index } = action.payload;
             const { contacts } = state;
             contact.selected = true;
+            index = (index === -1) ? contacts.length : index;
             contacts[index] = contact;
             return {
                 ...state,
                 isContactDetailsLoading: false,
                 selectedContact: { ...contactDetails, isEditMode: false },
-                contacts: [...contacts]
+                contacts: [...contacts],
+                selectedContactIndex: index
             };
         }
         default:

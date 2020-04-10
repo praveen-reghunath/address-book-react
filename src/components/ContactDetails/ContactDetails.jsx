@@ -19,7 +19,7 @@ function ContactDetails(props) {
 
     const onDeleteClick = () => {
         const { selectedContactIndex, deleteContact } = props;
-        deleteContact(selectedContactIndex);
+        deleteContact(contact.id, selectedContactIndex);
     };
 
     if (contact) {
