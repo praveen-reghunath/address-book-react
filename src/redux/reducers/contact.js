@@ -8,6 +8,7 @@ const {
     CONTACT_DETAILS_FETCH_SUCCESS,
     CONTACT_DETAILS_FETCH_FAILURE,
     REQUEST_EDIT_CONTACT,
+    REQUEST_NEW_CONTACT,
     EDIT_CONTACT_CONTACT_CHANGED,
     DELETE_CONTACT_BEGIN,
     DELETE_CONTACT_SUCCESS,
@@ -86,6 +87,20 @@ export default function contactReducer(state = initialState, action) {
             return {
                 ...state,
                 selectedContact: { ...state.selectedContact, isEditMode: true },
+            };
+        }
+        case REQUEST_NEW_CONTACT: {
+            const { contacts, selectedContactIndex } = state;
+
+            if (selectedContactIndex > -1) {
+                contacts[selectedContactIndex].selected = false;
+            }
+
+            return {
+                ...state,
+                selectedContact: { phones: [], addresses: [], isEditMode: true },
+                selectedContactIndex: -1,
+                contacts: [...contacts]
             };
         }
         case EDIT_CONTACT_CONTACT_CHANGED: {

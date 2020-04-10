@@ -65,6 +65,18 @@ export function requestEditContact(id) {
     }
 }
 
+export function requestNewContact() {
+
+    return async dispatch => {
+        const {
+            REQUEST_NEW_CONTACT,
+        } = CONTACT_ACTION_TYPE;
+
+        dispatch({ type: REQUEST_NEW_CONTACT });
+
+    }
+}
+
 export function onContactChange(contact) {
 
     return async dispatch => {

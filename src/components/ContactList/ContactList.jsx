@@ -12,7 +12,7 @@ function ContactList(props) {
     };
 
     const onAddNewClick = (e) => {
-        console.log(e);
+        props.requestNewContact();
     };
 
     return (
