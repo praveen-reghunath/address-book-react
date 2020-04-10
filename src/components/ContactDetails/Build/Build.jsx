@@ -10,12 +10,25 @@ function Build(props) {
     const { contact = {}, addressTypes, phoneTypes, onContactChange } = props;
 
     const onAddNewPhoneClick = () => {
-        contact.phones.push({});
+        const phone = {
+            id: -1,
+            phoneType: phoneTypes[0],
+            phoneNumber: ''
+        };
+        contact.phones.push(phone);
         onContactChange(contact);
     };
 
     const onAddNewAddressClick = () => {
-        contact.addresses.push({});
+        const address = {
+            id: -1,
+            addressType: addressTypes[0],
+            street: '',
+            city: '',
+            state: '',
+            postalCode: ''
+        };
+        contact.addresses.push(address);
         onContactChange(contact);
     };
 
