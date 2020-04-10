@@ -77,15 +77,27 @@ export function onContactChange(contact) {
     }
 }
 
-export function saveContact(contact) {
+export function saveContact(contactDetails, index) {
 
     return async dispatch => {
+
         const {
-            EDIT_CONTACT_CONTACT_CHANGED,
+            SAVE_CONTACT_BEGIN,
+            SAVE_CONTACT_SUCCESS,
+            SAVE_CONTACT_FAILURE
         } = CONTACT_ACTION_TYPE;
 
-        dispatch({ type: EDIT_CONTACT_CONTACT_CHANGED, payload: contact });
+        dispatch({ type: SAVE_CONTACT_BEGIN });
 
+        try {
+            // API CAll.
+            const { id, firstName, lastName } = contactDetails;
+            const contact = { id, firstName, lastName };
+            dispatch({ type: SAVE_CONTACT_SUCCESS, payload: { contact, contactDetails, index } });
+        }
+        catch (ex) {
+            dispatch({ type: SAVE_CONTACT_FAILURE, payload: ex });
+        }
     }
 }
 
@@ -93,12 +105,21 @@ export function deleteContact(id, index) {
 
     return async dispatch => {
         const {
-            DELETE_CONTACT,
+            DELETE_CONTACT_BEGIN,
+            DELETE_CONTACT_SUCCESS,
+            DELETE_CONTACT_FAILURE
         } = CONTACT_ACTION_TYPE;
 
-        // API Call.
+        dispatch({ type: DELETE_CONTACT_BEGIN, payload: index });
 
-        dispatch({ type: DELETE_CONTACT, payload: index });
+        try {
+            // API Call.
+            // const data = await API.deleteContact(id);
+            dispatch({ type: DELETE_CONTACT_SUCCESS, payload: index });
+        }
+        catch (ex) {
+            dispatch({ type: DELETE_CONTACT_FAILURE, payload: ex });
+        }
 
     }
 }

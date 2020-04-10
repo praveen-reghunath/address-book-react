@@ -13,7 +13,8 @@ function ContactDetails(props) {
     };
 
     const onDoneClick = () => {
-        props.saveContact(contact);
+        const { selectedContactIndex } = props;
+        props.saveContact(contact, selectedContactIndex);
     };
 
     const onDeleteClick = () => {
