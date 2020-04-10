@@ -45,10 +45,24 @@ function Build(props) {
     return (
         <div className={style.Build} >
             <DataItem label="First Name">
-                <input type="text" className={style.input} value={contact.firstName} onChange={onInputChange} name="firstName" />
+                <input
+                    type="text"
+                    className={style.input}
+                    value={contact.firstName}
+                    onChange={onInputChange}
+                    name="firstName"
+                    maxLength="250"
+                />
             </DataItem>
             <DataItem label="Last Name">
-                <input type="text" className={style.input} value={contact.lastName} onChange={onInputChange} name="lastName" />
+                <input
+                    type="text"
+                    className={style.input}
+                    value={contact.lastName}
+                    onChange={onInputChange}
+                    name="lastName"
+                    maxLength="250"
+                />
             </DataItem>
             {
                 contact.phones.map((phone, index) => (
