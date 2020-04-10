@@ -66,7 +66,7 @@ function AddressInput(props) {
                     </div>
                     <div className={style.postalCode}>
                         <input
-                            type="text"
+                            type="number"
                             className={style.input}
                             value={value.postalCode}
                             onChange={onInputChange}
