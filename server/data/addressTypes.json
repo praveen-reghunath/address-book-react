@@ -1,18 +1,6 @@
 [
-    {
-        "id": "1",
-        "name": "Home Address"
-    },
-    {
-        "id": "2",
-        "name": "Mailing Address"
-    },
-    {
-        "name": "Work Address",
-        "id": "3"
-    },
-    {
-        "name": "Other Address",
-        "id": "4"
-    }
+    "Home Address",
+    "Mailing Address",
+    "Work Address",
+    "Other Address"
 ]

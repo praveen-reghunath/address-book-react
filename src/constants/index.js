@@ -1,24 +1,19 @@
 const CONTACTS = '/contacts';
 const CONTACT_DETAILS = '/contacts/:contactId';
-const ADDRESSES = '/addresses';
-const PHONES = '/phones';
+const ADDRESSES = '/contacts/:contactId/addresses';
+const ADDRESS_DETAILS = '/contacts/:contactId/addresses/:addressId';
+const PHONES = '/contacts/:contactId/phones';
+const PHONE_DETAILS = '/contacts/:contactId/phones/:phoneId';
 const ADDRESS_TYPES = '/addressTypes';
 const PHONE_TYPES = '/phoneTypes';
-
-// TODO: follow REST principles.
-// Redesign the API end Points like bellow.
-// const CONTACTS = '/contacts';
-// const CONTACT = '/contacts/122';
-// const ADDRESSES = '/contacts/122/addresses';
-// const ADDRESS = '/contacts/122/addresses/2';
-// const PHONES = '/contacts/122/phones';
-// const PHONE = '/contacts/122/phones/4';
 
 export const URL = Object.freeze({
     CONTACTS,
     CONTACT_DETAILS,
     ADDRESSES,
+    ADDRESS_DETAILS,
     PHONES,
+    PHONE_DETAILS,
     ADDRESS_TYPES,
     PHONE_TYPES
 });

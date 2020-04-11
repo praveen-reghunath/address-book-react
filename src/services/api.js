@@ -38,14 +38,7 @@ class ApiClient {
     }
 
     static async getContactDetails(id) {
-        // TODO: Cache
-        const result = {
-            contact: await get(URL.CONTACT_DETAILS.replace(':contactId', id)),
-            addresses: await get(URL.ADDRESSES),
-            phones: await get(URL.PHONES)
-        }
-
-        return result;
+        return get(URL.CONTACT_DETAILS.replace(':contactId', id));
     }
 
 }

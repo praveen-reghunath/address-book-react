@@ -37,14 +37,9 @@ export function selectContact(id, index) {
         dispatch({ type: CONTACT_DETAILS_FETCH_BEGIN, payload: index });
 
         try {
-            const data = await API.getContactDetails(id);
-            const result = {
-                ...data.contact,
-                addresses: data.addresses,
-                phones: data.phones
-            }
-            // console.log(result);
-            dispatch({ type: CONTACT_DETAILS_FETCH_SUCCESS, payload: result });
+            const contact = await API.getContactDetails(id);
+
+            dispatch({ type: CONTACT_DETAILS_FETCH_SUCCESS, payload: contact });
         }
         catch (error) {
             console.log(error);
