@@ -143,7 +143,7 @@ class ContactFactory {
         }
 
         const contact = getContact(contactId, firstName, lastName);
-        this.contacts[index] = contact
+        this.contacts[index] = { ...this.contacts[index], ...contact };
 
         response.json(contact);
     }
@@ -192,6 +192,10 @@ class ContactFactory {
             }
 
             let address = getAddress(addressId, addressType, street, city, state, postalCode);
+
+            if (!Array.isArray(contact.addresses)) {
+                contact.addresses = [];
+            }
             contact.addresses[index] = address;
 
             response.json(address);
