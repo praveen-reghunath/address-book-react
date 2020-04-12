@@ -120,8 +120,8 @@ export function deleteContact(id, index) {
         dispatch({ type: DELETE_CONTACT_BEGIN, payload: index });
 
         try {
-            // API Call.
-            // const data = await API.deleteContact(id);
+
+            await API.deleteContact(id);
             dispatch({ type: DELETE_CONTACT_SUCCESS, payload: index });
         }
         catch (ex) {

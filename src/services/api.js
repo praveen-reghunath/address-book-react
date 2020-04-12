@@ -22,6 +22,10 @@ async function get(url) {
     return serverRequest(url, { ...OPTIONS, method: 'GET' });
 }
 
+async function deleteRequest(url) {
+    return serverRequest(url, { ...OPTIONS, method: 'DELETE' });
+}
+
 async function post(url, data) {
     return serverRequest(url, { ...OPTIONS, method: 'POST', body: JSON.stringify(data) });
 }
@@ -62,8 +66,12 @@ class ApiClient {
             return contact;
         }
         catch (ex) {
-
+            throw ex;
         }
+    }
+
+    static async deleteContact(id) {
+        deleteRequest(URL.CONTACT_DETAILS.replace(':contactId', id));
     }
 
     static async getContactDetails(id) {
