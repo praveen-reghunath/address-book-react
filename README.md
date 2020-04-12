@@ -1,4 +1,5 @@
-Address-Book-React is a sample application developed in React to show case the React Skills.
+Address-Book-React is a sample application developed in React to show case my React Skills.
+
 Used bellow technologies to develope the project
 
 React, Redux, SCSS, Node.js, Express, 
