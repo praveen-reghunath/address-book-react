@@ -97,9 +97,9 @@ export function saveContact(contactDetails, index) {
         dispatch({ type: SAVE_CONTACT_BEGIN });
 
         try {
-            const { id, firstName, lastName } = contactDetails;
+            const { firstName, lastName } = contactDetails;
             contactDetails = await API.saveContact(contactDetails);
-            const contact = { id, firstName, lastName };
+            const contact = { id: contactDetails.id, firstName, lastName };
             dispatch({ type: SAVE_CONTACT_SUCCESS, payload: { contact, contactDetails, index } });
         }
         catch (ex) {

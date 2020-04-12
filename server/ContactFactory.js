@@ -133,19 +133,29 @@ class ContactFactory {
         let contactId = request.params.contactId;
         const { firstName, lastName } = request.body;
         let index = -1;
-
+        let contactDetails;
         if (contactId == -1) {
             contactId = this.contacts.length + 1;
-            index = this.contacts.length + 1;
+            index = this.contacts.length;
         }
         else {
             index = this.contacts.findIndex(item => item.id == contactId);
         }
 
         const contact = getContact(contactId, firstName, lastName);
-        this.contacts[index] = { ...this.contacts[index], ...contact };
+        contactDetails = this.contacts[index];
+
+        if (contactDetails) {
+            contactDetails = { ...contactDetails, firstName, lastName };
+        }
+        else {
+            contactDetails = { ...contact, addresses: [], phones: [] };
+        }
+
+        this.contacts[index] = contactDetails;
 
         response.json(contact);
+
     }
 
     handleContactDelete(request, response) {
@@ -185,7 +195,7 @@ class ContactFactory {
             const { addresses = [] } = contact;
             if (addressId == -1) {
                 addressId = addresses.length + 1;
-                index = addresses.length + 1;
+                index = addresses.length;
             }
             else {
                 index = addresses.findIndex(addr => addr.id == addressId);
@@ -229,7 +239,7 @@ class ContactFactory {
             const { phones = [] } = contact;
             if (phoneId == -1) {
                 phoneId = phones.length + 1;
-                index = phones.length + 1;
+                index = phones.length;
             }
             else {
                 index = phones.findIndex(ph => ph.id == phoneId);
